@@ -6,3 +6,39 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum Role {
+  CLIENT
+  NUTRICIONISTA
+}
+
+enum Status {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+  role     Role   @default(CLIENT)
+
+
+
+  appointmentsClient Appointment[] @relation("ClientAppointments")
+  appointmentsNutricionista Appointment[] @relation("NutricionistaAppointments")
+}
+
+model Appointment {
+  id     Int      @id @default(autoincrement())
+  data   DateTime @default(now())
+  hour   DateTime @default(now())
+  status Status   @default(PENDING)
+
+  clientId        Int
+  nutricionistaId Int
+  client          User @relation("ClientAppointments", fields: [clientId], references: [id])
+  nutricionista   User @relation("NutricionistaAppointments", fields: [nutricionistaId], references: [id])
+}
