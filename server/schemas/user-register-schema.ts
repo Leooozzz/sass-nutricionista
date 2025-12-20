@@ -4,7 +4,8 @@ import z from "zod";
 export const registerSchema=z.object({
     name:z.string().min(2),
     email:z.email(),
-    password:z.string().min(8)
+    password:z.string().min(8),
+    role:z.enum(["CLIENT","NUTRICIONISTA"]).optional().default("CLIENT")
 })
 
 
