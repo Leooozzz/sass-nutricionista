@@ -7,17 +7,6 @@ datasource db {
   provider = "postgresql"
 }
 
-enum Role {
-  CLIENT
-  NUTRICIONISTA
-}
-
-enum Status {
-  PENDING
-  CONFIRMED
-  CANCELLED
-}
-
 model User {
   id       Int    @id @default(autoincrement())
   name     String
@@ -25,20 +14,33 @@ model User {
   password String
   role     Role   @default(CLIENT)
 
+  appointments  Appointment[]  @relation("ClientAppointments")
+  nutricionista Nutricionista?
+}
 
+model Nutricionista {
+  id            Int    @id @default(autoincrement())
+  name          String
+  userId        Int    @unique
+  crm           String
+  especialidade String
 
-  appointmentsClient Appointment[] @relation("ClientAppointments")
-  appointmentsNutricionista Appointment[] @relation("NutricionistaAppointments")
+  user         User          @relation(fields: [userId], references: [id])
+  appointments Appointment[] @relation("NutricionistaAppointments")
 }
 
 model Appointment {
-  id     Int      @id @default(autoincrement())
-  data   DateTime @default(now())
-  hour   DateTime @default(now())
-  status Status   @default(PENDING)
-
+  id              Int      @id @default(autoincrement())
+  date            DateTime @default(now())
+  hour            DateTime @default(now())
+  status          String   @default("PENDING")
   clientId        Int
   nutricionistaId Int
-  client          User @relation("ClientAppointments", fields: [clientId], references: [id])
-  nutricionista   User @relation("NutricionistaAppointments", fields: [nutricionistaId], references: [id])
+
+  client        User          @relation("ClientAppointments", fields: [clientId], references: [id])
+  nutricionista Nutricionista @relation("NutricionistaAppointments", fields: [nutricionistaId], references: [id])
+}
+
+enum Role {
+  CLIENT
 }

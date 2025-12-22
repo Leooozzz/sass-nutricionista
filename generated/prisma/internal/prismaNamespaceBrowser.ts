@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
+  Nutricionista: 'Nutricionista',
   Appointment: 'Appointment'
 } as const
 
@@ -82,9 +83,19 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const NutricionistaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  crm: 'crm',
+  especialidade: 'especialidade'
+} as const
+
+export type NutricionistaScalarFieldEnum = (typeof NutricionistaScalarFieldEnum)[keyof typeof NutricionistaScalarFieldEnum]
+
+
 export const AppointmentScalarFieldEnum = {
   id: 'id',
-  data: 'data',
+  date: 'date',
   hour: 'hour',
   status: 'status',
   clientId: 'clientId',

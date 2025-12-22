@@ -45,6 +45,11 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
+ * Model Nutricionista
+ * 
+ */
+export type Nutricionista = Prisma.NutricionistaModel
+/**
  * Model Appointment
  * 
  */

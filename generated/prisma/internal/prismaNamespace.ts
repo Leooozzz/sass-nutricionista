@@ -385,6 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
+  Nutricionista: 'Nutricionista',
   Appointment: 'Appointment'
 } as const
 
@@ -401,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "appointment"
+    modelProps: "user" | "nutricionista" | "appointment"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -476,6 +477,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UserCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UserCountAggregateOutputType> | number
+        }
+      }
+    }
+    Nutricionista: {
+      payload: Prisma.$NutricionistaPayload<ExtArgs>
+      fields: Prisma.NutricionistaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.NutricionistaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.NutricionistaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>
+        }
+        findFirst: {
+          args: Prisma.NutricionistaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.NutricionistaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>
+        }
+        findMany: {
+          args: Prisma.NutricionistaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>[]
+        }
+        create: {
+          args: Prisma.NutricionistaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>
+        }
+        createMany: {
+          args: Prisma.NutricionistaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.NutricionistaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>[]
+        }
+        delete: {
+          args: Prisma.NutricionistaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>
+        }
+        update: {
+          args: Prisma.NutricionistaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>
+        }
+        deleteMany: {
+          args: Prisma.NutricionistaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.NutricionistaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.NutricionistaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>[]
+        }
+        upsert: {
+          args: Prisma.NutricionistaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NutricionistaPayload>
+        }
+        aggregate: {
+          args: Prisma.NutricionistaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNutricionista>
+        }
+        groupBy: {
+          args: Prisma.NutricionistaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NutricionistaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.NutricionistaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NutricionistaCountAggregateOutputType> | number
         }
       }
     }
@@ -603,9 +678,19 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const NutricionistaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  crm: 'crm',
+  especialidade: 'especialidade'
+} as const
+
+export type NutricionistaScalarFieldEnum = (typeof NutricionistaScalarFieldEnum)[keyof typeof NutricionistaScalarFieldEnum]
+
+
 export const AppointmentScalarFieldEnum = {
   id: 'id',
-  data: 'data',
+  date: 'date',
   hour: 'hour',
   status: 'status',
   clientId: 'clientId',
@@ -690,20 +775,6 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-/**
- * Reference to a field of type 'Status'
- */
-export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status'>
-    
-
-
-/**
- * Reference to a field of type 'Status[]'
- */
-export type ListEnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status[]'>
     
 
 
@@ -816,6 +887,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
+  nutricionista?: Prisma.NutricionistaOmit
   appointment?: Prisma.AppointmentOmit
 }
 

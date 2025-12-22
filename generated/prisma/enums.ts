@@ -10,17 +10,7 @@
 */
 
 export const Role = {
-  CLIENT: 'CLIENT',
-  NUTRICIONISTA: 'NUTRICIONISTA'
+  CLIENT: 'CLIENT'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
-
-
-export const Status = {
-  PENDING: 'PENDING',
-  CONFIRMED: 'CONFIRMED',
-  CANCELLED: 'CANCELLED'
-} as const
-
-export type Status = (typeof Status)[keyof typeof Status]
