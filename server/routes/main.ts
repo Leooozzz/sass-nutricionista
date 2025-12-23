@@ -10,10 +10,9 @@ router.post('/user/register',userController.register)
 router.post('/user/login',userController.login)
 
 
-router.post('/appointments',authMiddleware,appoimentsController.appoiments);
-router.get('/appointments',authMiddleware,appoimentsController.getAppoiments);
-
-
+router.post('/appointments',authMiddleware,appoimentsController.appointments);
+router.get('/appointments',authMiddleware,appoimentsController.getAppointments);
+router.put('/appointments/:id',authMiddleware,appoimentsController.putAppointments);
 
 router.get('/nutricionistas',authMiddleware,nutricionistaController.getNutricionista);
 
