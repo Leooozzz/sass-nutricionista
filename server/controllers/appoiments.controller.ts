@@ -1,7 +1,8 @@
 import { appoimentsSchema } from "../schemas/appoiment-schema";
 import { Response, Request } from "express";
-import { createAppointment, getAllNutricionista } from "../services/appoiment-services";
+import { createAppointment, getAppoimentsByClients } from "../services/appoiment-services";
 import { ExtendedRequest } from "../types/auth-request";
+import { json } from "zod";
 
 
 
@@ -19,12 +20,12 @@ export const appoiments = async (req: ExtendedRequest, res: Response) => {
   return res.status(201).json({ create });
 };
 
-export const getNutricionista = async(req:ExtendedRequest,res:Response)=>{
-    const clientId = req.userId;
-    if(!clientId)
-        return res.status(401).json({ erro: "Usuario nao autenticado" });
-    const nutricionista = await getAllNutricionista()
-    if(!nutricionista) return res.status(404).json({error:"Nenhum nutricionista encontrado"})
-    return res.status(200).json(nutricionista)
-}
 
+export const getAppoiments = async (req:ExtendedRequest,res:Response) => {
+    const clientId = req.userId
+    if(!clientId) return res.status(401).json({error:"Usuario nao autenticado"})
+    const appointments =await getAppoimentsByClients(clientId)
+    if(!appointments || appointments.length === 0)
+        return res.status(400).json({error:"Nenhuma consulta encontrada"})
+    return res.status(400).json(appointments)
+}

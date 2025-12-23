@@ -32,15 +32,23 @@ export const createAppointment = async (
 };
 
 
-export const getAllNutricionista = async () => {
-    const  nutricionista = await prisma.nutricionista.findMany({
+export const getAppoimentsByClients = async(clientId:number)=>{
+    const appoiments = await prisma.appointment.findMany({
+        where:{clientId},
         select:{
             id:true,
-            name:true,
-            crm:true,
-            especialidade:true,
+            date:true,
+            hour:true,
+            status:true,
+            nutricionista:{
+                select:{
+                    id:true,
+                    name:true,
+                    crm:true,
+                    especialidade:true
+                }
+            }
         }
     })
-    if(nutricionista.length === 0) return []
-    return  nutricionista
+    return (appoiments)
 }
