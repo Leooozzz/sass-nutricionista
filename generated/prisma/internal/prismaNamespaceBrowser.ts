@@ -85,6 +85,7 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const NutricionistaScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   userId: 'userId',
   crm: 'crm',
   especialidade: 'especialidade'

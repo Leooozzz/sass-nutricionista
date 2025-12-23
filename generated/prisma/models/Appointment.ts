@@ -42,7 +42,7 @@ export type AppointmentMinAggregateOutputType = {
   id: number | null
   date: Date | null
   hour: Date | null
-  status: string | null
+  status: $Enums.AppointmentStatus | null
   clientId: number | null
   nutricionistaId: number | null
 }
@@ -51,7 +51,7 @@ export type AppointmentMaxAggregateOutputType = {
   id: number | null
   date: Date | null
   hour: Date | null
-  status: string | null
+  status: $Enums.AppointmentStatus | null
   clientId: number | null
   nutricionistaId: number | null
 }
@@ -197,7 +197,7 @@ export type AppointmentGroupByOutputType = {
   id: number
   date: Date
   hour: Date
-  status: string
+  status: $Enums.AppointmentStatus
   clientId: number
   nutricionistaId: number
   _count: AppointmentCountAggregateOutputType | null
@@ -229,7 +229,7 @@ export type AppointmentWhereInput = {
   id?: Prisma.IntFilter<"Appointment"> | number
   date?: Prisma.DateTimeFilter<"Appointment"> | Date | string
   hour?: Prisma.DateTimeFilter<"Appointment"> | Date | string
-  status?: Prisma.StringFilter<"Appointment"> | string
+  status?: Prisma.EnumAppointmentStatusFilter<"Appointment"> | $Enums.AppointmentStatus
   clientId?: Prisma.IntFilter<"Appointment"> | number
   nutricionistaId?: Prisma.IntFilter<"Appointment"> | number
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -254,7 +254,7 @@ export type AppointmentWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.AppointmentWhereInput | Prisma.AppointmentWhereInput[]
   date?: Prisma.DateTimeFilter<"Appointment"> | Date | string
   hour?: Prisma.DateTimeFilter<"Appointment"> | Date | string
-  status?: Prisma.StringFilter<"Appointment"> | string
+  status?: Prisma.EnumAppointmentStatusFilter<"Appointment"> | $Enums.AppointmentStatus
   clientId?: Prisma.IntFilter<"Appointment"> | number
   nutricionistaId?: Prisma.IntFilter<"Appointment"> | number
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -282,24 +282,24 @@ export type AppointmentScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Appointment"> | number
   date?: Prisma.DateTimeWithAggregatesFilter<"Appointment"> | Date | string
   hour?: Prisma.DateTimeWithAggregatesFilter<"Appointment"> | Date | string
-  status?: Prisma.StringWithAggregatesFilter<"Appointment"> | string
+  status?: Prisma.EnumAppointmentStatusWithAggregatesFilter<"Appointment"> | $Enums.AppointmentStatus
   clientId?: Prisma.IntWithAggregatesFilter<"Appointment"> | number
   nutricionistaId?: Prisma.IntWithAggregatesFilter<"Appointment"> | number
 }
 
 export type AppointmentCreateInput = {
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   client: Prisma.UserCreateNestedOneWithoutAppointmentsInput
   nutricionista: Prisma.NutricionistaCreateNestedOneWithoutAppointmentsInput
 }
 
 export type AppointmentUncheckedCreateInput = {
   id?: number
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   clientId: number
   nutricionistaId: number
 }
@@ -307,7 +307,7 @@ export type AppointmentUncheckedCreateInput = {
 export type AppointmentUpdateInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   client?: Prisma.UserUpdateOneRequiredWithoutAppointmentsNestedInput
   nutricionista?: Prisma.NutricionistaUpdateOneRequiredWithoutAppointmentsNestedInput
 }
@@ -316,16 +316,16 @@ export type AppointmentUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   clientId?: Prisma.IntFieldUpdateOperationsInput | number
   nutricionistaId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type AppointmentCreateManyInput = {
   id?: number
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   clientId: number
   nutricionistaId: number
 }
@@ -333,14 +333,14 @@ export type AppointmentCreateManyInput = {
 export type AppointmentUpdateManyMutationInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
 }
 
 export type AppointmentUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   clientId?: Prisma.IntFieldUpdateOperationsInput | number
   nutricionistaId?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -482,18 +482,22 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type EnumAppointmentStatusFieldUpdateOperationsInput = {
+  set?: $Enums.AppointmentStatus
+}
+
 export type AppointmentCreateWithoutClientInput = {
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   nutricionista: Prisma.NutricionistaCreateNestedOneWithoutAppointmentsInput
 }
 
 export type AppointmentUncheckedCreateWithoutClientInput = {
   id?: number
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   nutricionistaId: number
 }
 
@@ -530,23 +534,23 @@ export type AppointmentScalarWhereInput = {
   id?: Prisma.IntFilter<"Appointment"> | number
   date?: Prisma.DateTimeFilter<"Appointment"> | Date | string
   hour?: Prisma.DateTimeFilter<"Appointment"> | Date | string
-  status?: Prisma.StringFilter<"Appointment"> | string
+  status?: Prisma.EnumAppointmentStatusFilter<"Appointment"> | $Enums.AppointmentStatus
   clientId?: Prisma.IntFilter<"Appointment"> | number
   nutricionistaId?: Prisma.IntFilter<"Appointment"> | number
 }
 
 export type AppointmentCreateWithoutNutricionistaInput = {
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   client: Prisma.UserCreateNestedOneWithoutAppointmentsInput
 }
 
 export type AppointmentUncheckedCreateWithoutNutricionistaInput = {
   id?: number
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   clientId: number
 }
 
@@ -578,16 +582,16 @@ export type AppointmentUpdateManyWithWhereWithoutNutricionistaInput = {
 
 export type AppointmentCreateManyClientInput = {
   id?: number
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   nutricionistaId: number
 }
 
 export type AppointmentUpdateWithoutClientInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   nutricionista?: Prisma.NutricionistaUpdateOneRequiredWithoutAppointmentsNestedInput
 }
 
@@ -595,7 +599,7 @@ export type AppointmentUncheckedUpdateWithoutClientInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   nutricionistaId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -603,22 +607,22 @@ export type AppointmentUncheckedUpdateManyWithoutClientInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   nutricionistaId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type AppointmentCreateManyNutricionistaInput = {
   id?: number
-  date: Date | string
-  hour: Date | string
-  status?: string
+  date?: Date | string
+  hour?: Date | string
+  status?: $Enums.AppointmentStatus
   clientId: number
 }
 
 export type AppointmentUpdateWithoutNutricionistaInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   client?: Prisma.UserUpdateOneRequiredWithoutAppointmentsNestedInput
 }
 
@@ -626,7 +630,7 @@ export type AppointmentUncheckedUpdateWithoutNutricionistaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   clientId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -634,7 +638,7 @@ export type AppointmentUncheckedUpdateManyWithoutNutricionistaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hour?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
   clientId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -706,7 +710,7 @@ export type $AppointmentPayload<ExtArgs extends runtime.Types.Extensions.Interna
     id: number
     date: Date
     hour: Date
-    status: string
+    status: $Enums.AppointmentStatus
     clientId: number
     nutricionistaId: number
   }, ExtArgs["result"]["appointment"]>
@@ -1137,7 +1141,7 @@ export interface AppointmentFieldRefs {
   readonly id: Prisma.FieldRef<"Appointment", 'Int'>
   readonly date: Prisma.FieldRef<"Appointment", 'DateTime'>
   readonly hour: Prisma.FieldRef<"Appointment", 'DateTime'>
-  readonly status: Prisma.FieldRef<"Appointment", 'String'>
+  readonly status: Prisma.FieldRef<"Appointment", 'AppointmentStatus'>
   readonly clientId: Prisma.FieldRef<"Appointment", 'Int'>
   readonly nutricionistaId: Prisma.FieldRef<"Appointment", 'Int'>
 }

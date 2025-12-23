@@ -38,6 +38,7 @@ export type NutricionistaSumAggregateOutputType = {
 
 export type NutricionistaMinAggregateOutputType = {
   id: number | null
+  name: string | null
   userId: number | null
   crm: string | null
   especialidade: string | null
@@ -45,6 +46,7 @@ export type NutricionistaMinAggregateOutputType = {
 
 export type NutricionistaMaxAggregateOutputType = {
   id: number | null
+  name: string | null
   userId: number | null
   crm: string | null
   especialidade: string | null
@@ -52,6 +54,7 @@ export type NutricionistaMaxAggregateOutputType = {
 
 export type NutricionistaCountAggregateOutputType = {
   id: number
+  name: number
   userId: number
   crm: number
   especialidade: number
@@ -71,6 +74,7 @@ export type NutricionistaSumAggregateInputType = {
 
 export type NutricionistaMinAggregateInputType = {
   id?: true
+  name?: true
   userId?: true
   crm?: true
   especialidade?: true
@@ -78,6 +82,7 @@ export type NutricionistaMinAggregateInputType = {
 
 export type NutricionistaMaxAggregateInputType = {
   id?: true
+  name?: true
   userId?: true
   crm?: true
   especialidade?: true
@@ -85,6 +90,7 @@ export type NutricionistaMaxAggregateInputType = {
 
 export type NutricionistaCountAggregateInputType = {
   id?: true
+  name?: true
   userId?: true
   crm?: true
   especialidade?: true
@@ -179,6 +185,7 @@ export type NutricionistaGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 
 export type NutricionistaGroupByOutputType = {
   id: number
+  name: string
   userId: number
   crm: string
   especialidade: string
@@ -209,6 +216,7 @@ export type NutricionistaWhereInput = {
   OR?: Prisma.NutricionistaWhereInput[]
   NOT?: Prisma.NutricionistaWhereInput | Prisma.NutricionistaWhereInput[]
   id?: Prisma.IntFilter<"Nutricionista"> | number
+  name?: Prisma.StringFilter<"Nutricionista"> | string
   userId?: Prisma.IntFilter<"Nutricionista"> | number
   crm?: Prisma.StringFilter<"Nutricionista"> | string
   especialidade?: Prisma.StringFilter<"Nutricionista"> | string
@@ -218,6 +226,7 @@ export type NutricionistaWhereInput = {
 
 export type NutricionistaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   crm?: Prisma.SortOrder
   especialidade?: Prisma.SortOrder
@@ -231,6 +240,7 @@ export type NutricionistaWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.NutricionistaWhereInput | Prisma.NutricionistaWhereInput[]
   OR?: Prisma.NutricionistaWhereInput[]
   NOT?: Prisma.NutricionistaWhereInput | Prisma.NutricionistaWhereInput[]
+  name?: Prisma.StringFilter<"Nutricionista"> | string
   crm?: Prisma.StringFilter<"Nutricionista"> | string
   especialidade?: Prisma.StringFilter<"Nutricionista"> | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -239,6 +249,7 @@ export type NutricionistaWhereUniqueInput = Prisma.AtLeast<{
 
 export type NutricionistaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   crm?: Prisma.SortOrder
   especialidade?: Prisma.SortOrder
@@ -254,12 +265,14 @@ export type NutricionistaScalarWhereWithAggregatesInput = {
   OR?: Prisma.NutricionistaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.NutricionistaScalarWhereWithAggregatesInput | Prisma.NutricionistaScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Nutricionista"> | number
+  name?: Prisma.StringWithAggregatesFilter<"Nutricionista"> | string
   userId?: Prisma.IntWithAggregatesFilter<"Nutricionista"> | number
   crm?: Prisma.StringWithAggregatesFilter<"Nutricionista"> | string
   especialidade?: Prisma.StringWithAggregatesFilter<"Nutricionista"> | string
 }
 
 export type NutricionistaCreateInput = {
+  name: string
   crm: string
   especialidade: string
   user: Prisma.UserCreateNestedOneWithoutNutricionistaInput
@@ -268,6 +281,7 @@ export type NutricionistaCreateInput = {
 
 export type NutricionistaUncheckedCreateInput = {
   id?: number
+  name: string
   userId: number
   crm: string
   especialidade: string
@@ -275,6 +289,7 @@ export type NutricionistaUncheckedCreateInput = {
 }
 
 export type NutricionistaUpdateInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   crm?: Prisma.StringFieldUpdateOperationsInput | string
   especialidade?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.UserUpdateOneRequiredWithoutNutricionistaNestedInput
@@ -283,6 +298,7 @@ export type NutricionistaUpdateInput = {
 
 export type NutricionistaUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   crm?: Prisma.StringFieldUpdateOperationsInput | string
   especialidade?: Prisma.StringFieldUpdateOperationsInput | string
@@ -291,18 +307,21 @@ export type NutricionistaUncheckedUpdateInput = {
 
 export type NutricionistaCreateManyInput = {
   id?: number
+  name: string
   userId: number
   crm: string
   especialidade: string
 }
 
 export type NutricionistaUpdateManyMutationInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   crm?: Prisma.StringFieldUpdateOperationsInput | string
   especialidade?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type NutricionistaUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   crm?: Prisma.StringFieldUpdateOperationsInput | string
   especialidade?: Prisma.StringFieldUpdateOperationsInput | string
@@ -315,6 +334,7 @@ export type NutricionistaNullableScalarRelationFilter = {
 
 export type NutricionistaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   crm?: Prisma.SortOrder
   especialidade?: Prisma.SortOrder
@@ -327,6 +347,7 @@ export type NutricionistaAvgOrderByAggregateInput = {
 
 export type NutricionistaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   crm?: Prisma.SortOrder
   especialidade?: Prisma.SortOrder
@@ -334,6 +355,7 @@ export type NutricionistaMaxOrderByAggregateInput = {
 
 export type NutricionistaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   crm?: Prisma.SortOrder
   especialidade?: Prisma.SortOrder
@@ -396,6 +418,7 @@ export type NutricionistaUpdateOneRequiredWithoutAppointmentsNestedInput = {
 }
 
 export type NutricionistaCreateWithoutUserInput = {
+  name: string
   crm: string
   especialidade: string
   appointments?: Prisma.AppointmentCreateNestedManyWithoutNutricionistaInput
@@ -403,6 +426,7 @@ export type NutricionistaCreateWithoutUserInput = {
 
 export type NutricionistaUncheckedCreateWithoutUserInput = {
   id?: number
+  name: string
   crm: string
   especialidade: string
   appointments?: Prisma.AppointmentUncheckedCreateNestedManyWithoutNutricionistaInput
@@ -425,6 +449,7 @@ export type NutricionistaUpdateToOneWithWhereWithoutUserInput = {
 }
 
 export type NutricionistaUpdateWithoutUserInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   crm?: Prisma.StringFieldUpdateOperationsInput | string
   especialidade?: Prisma.StringFieldUpdateOperationsInput | string
   appointments?: Prisma.AppointmentUpdateManyWithoutNutricionistaNestedInput
@@ -432,12 +457,14 @@ export type NutricionistaUpdateWithoutUserInput = {
 
 export type NutricionistaUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   crm?: Prisma.StringFieldUpdateOperationsInput | string
   especialidade?: Prisma.StringFieldUpdateOperationsInput | string
   appointments?: Prisma.AppointmentUncheckedUpdateManyWithoutNutricionistaNestedInput
 }
 
 export type NutricionistaCreateWithoutAppointmentsInput = {
+  name: string
   crm: string
   especialidade: string
   user: Prisma.UserCreateNestedOneWithoutNutricionistaInput
@@ -445,6 +472,7 @@ export type NutricionistaCreateWithoutAppointmentsInput = {
 
 export type NutricionistaUncheckedCreateWithoutAppointmentsInput = {
   id?: number
+  name: string
   userId: number
   crm: string
   especialidade: string
@@ -467,6 +495,7 @@ export type NutricionistaUpdateToOneWithWhereWithoutAppointmentsInput = {
 }
 
 export type NutricionistaUpdateWithoutAppointmentsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   crm?: Prisma.StringFieldUpdateOperationsInput | string
   especialidade?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.UserUpdateOneRequiredWithoutNutricionistaNestedInput
@@ -474,6 +503,7 @@ export type NutricionistaUpdateWithoutAppointmentsInput = {
 
 export type NutricionistaUncheckedUpdateWithoutAppointmentsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   crm?: Prisma.StringFieldUpdateOperationsInput | string
   especialidade?: Prisma.StringFieldUpdateOperationsInput | string
@@ -512,6 +542,7 @@ export type NutricionistaCountOutputTypeCountAppointmentsArgs<ExtArgs extends ru
 
 export type NutricionistaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
   userId?: boolean
   crm?: boolean
   especialidade?: boolean
@@ -522,6 +553,7 @@ export type NutricionistaSelect<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type NutricionistaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
   userId?: boolean
   crm?: boolean
   especialidade?: boolean
@@ -530,6 +562,7 @@ export type NutricionistaSelectCreateManyAndReturn<ExtArgs extends runtime.Types
 
 export type NutricionistaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
   userId?: boolean
   crm?: boolean
   especialidade?: boolean
@@ -538,12 +571,13 @@ export type NutricionistaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
 
 export type NutricionistaSelectScalar = {
   id?: boolean
+  name?: boolean
   userId?: boolean
   crm?: boolean
   especialidade?: boolean
 }
 
-export type NutricionistaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "crm" | "especialidade", ExtArgs["result"]["nutricionista"]>
+export type NutricionistaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "userId" | "crm" | "especialidade", ExtArgs["result"]["nutricionista"]>
 export type NutricionistaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   appointments?: boolean | Prisma.Nutricionista$appointmentsArgs<ExtArgs>
@@ -564,6 +598,7 @@ export type $NutricionistaPayload<ExtArgs extends runtime.Types.Extensions.Inter
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    name: string
     userId: number
     crm: string
     especialidade: string
@@ -993,6 +1028,7 @@ export interface Prisma__NutricionistaClient<T, Null = never, ExtArgs extends ru
  */
 export interface NutricionistaFieldRefs {
   readonly id: Prisma.FieldRef<"Nutricionista", 'Int'>
+  readonly name: Prisma.FieldRef<"Nutricionista", 'String'>
   readonly userId: Prisma.FieldRef<"Nutricionista", 'Int'>
   readonly crm: Prisma.FieldRef<"Nutricionista", 'String'>
   readonly especialidade: Prisma.FieldRef<"Nutricionista", 'String'>

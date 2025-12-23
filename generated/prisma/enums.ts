@@ -9,6 +9,16 @@
 * 🟢 You can import this file directly.
 */
 
+export const AppointmentStatus = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  CANCELED: 'CANCELED',
+  DONE: 'DONE'
+} as const
+
+export type AppointmentStatus = (typeof AppointmentStatus)[keyof typeof AppointmentStatus]
+
+
 export const Role = {
   CLIENT: 'CLIENT'
 } as const

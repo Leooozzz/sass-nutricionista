@@ -10,7 +10,7 @@ router.post('/user/login',userController.login)
 
 
 router.post('/appoiments',authMiddleware,appoimentsController.appoiments)
-
+router.get('/nutricionistas',authMiddleware,appoimentsController.getNutricionista)
 
 router.get('/ping',(req,res)=>{
     res.json({pong:true})

@@ -6,6 +6,12 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELED
+  DONE
+}
 
 model User {
   id       Int    @id @default(autoincrement())
@@ -33,7 +39,7 @@ model Appointment {
   id              Int      @id @default(autoincrement())
   date            DateTime @default(now())
   hour            DateTime @default(now())
-  status          String   @default("PENDING")
+  status          AppointmentStatus  @default(PENDING)
   clientId        Int
   nutricionistaId Int
 
