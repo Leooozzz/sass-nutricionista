@@ -67,3 +67,10 @@ export const updateAppointment = async (id: number,fields: {date?: string;hour?:
 
     }
 
+export const deletedAppointments = async (id:number)=>{
+  const appoiments = await prisma.appointment.delete({
+    where:{id}
+  })
+  if(!appoiments) return null
+  return appoiments
+}

@@ -2,6 +2,7 @@ import { appoimentsSchema } from "../schemas/appoiment-schema";
 import { Response, Request } from "express";
 import {
   createAppointment,
+  deletedAppointments,
   getAppoimentsByClients,
   updateAppointment,
 } from "../services/appoiment-services";
@@ -53,4 +54,16 @@ export const putAppointments = async (req: ExtendedRequest, res: Response) => {
 
   if (!update) return res.status(404).json({ error: "Erro na atualização" });
   return res.status(201).json({ update });
+};
+
+
+export const deleteAppointments = async(req:ExtendedRequest,res:Response)=>{
+  const clientId = req.userId
+   if (!clientId)
+    return res.status(401).json({ erro: "Usuario nao autenticado " });
+  const {id} = req.params
+  const deleted = await deletedAppointments(Number(id))
+  if (!deleted) return res.status(404).json({ error: "Consulta nao encontrada" });
+  return res.status(200).json({ message: "Consulta deletada com sucesso", deleted });
+
 };
