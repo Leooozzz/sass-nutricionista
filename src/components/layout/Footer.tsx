@@ -90,8 +90,6 @@ export const Footer = () => {
             <Image src={'/images/github.png'} alt={'github'} width={24} height={24} />
             <a href="https://github.com/Leooozzz">https://github.com/Leooozzz</a>
         </Button>
-        
-
       </div>
     </footer>
   );

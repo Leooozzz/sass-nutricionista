@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -21,7 +22,8 @@ export default function Page() {
             <div className="text-lg md:text-2xl mt-2">
               sua dieta, do seu jeito!
             </div>
-            <Button className="bg-green-600 text-white rounded-full mt-6 p-6 text-lg md:text-2xl hover:bg-green-700 flex gap-3">
+            <Link href={"/register"}>
+             <Button className="bg-green-600 text-white rounded-full mt-6 p-6 text-lg md:text-2xl hover:bg-green-700 flex gap-3">
               Criar uma conta
               <div>
                 <svg
@@ -38,13 +40,42 @@ export default function Page() {
                     d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                   />
                 </svg>
-                
               </div>
             </Button>
+            </Link>
           </div>
         </div>
-        <div className="mt-10 bg-green-700 p-3">
-          ...
+
+        <div className="mt-15 justify-center flex md:flex-row flex-col items-center gap-8">
+          <Image
+            src="/images/nutribemimagem.png"
+            alt="Nutricionista que entende você"
+            height={480}
+            width={480}
+            className="flex"
+          />
+
+          <div className="max-w-xl">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              Nutri que entende você
+            </h1>
+
+            <p className="text-gray-600 mb-4">
+              Aqui você não recebe dietas impossíveis ou cheias de regras. O
+              acompanhamento é feito pensando na sua rotina, no que você gosta
+              de comer e no que realmente funciona para você.
+            </p>
+
+            <p className="text-gray-600 mb-6">
+              Mais do que emagrecer, o objetivo é criar uma relação saudável com
+              a comida, sem culpa, sem sofrimento e com resultados reais.
+            </p>
+
+            <Button>Agendar consulta</Button>
+          </div>
+        </div>
+        <div>
+          ....
         </div>
       </main>
     </div>
