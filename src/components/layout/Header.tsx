@@ -16,7 +16,7 @@ export function Header (){
                 <div className="flex justify-center items-center gap-6">
                     <ModeToggle/>
                 <Button className="bg-transparent text-green-600 text-lg p-4 border border-green-600 rounded-full hover:bg-green-600 hover:text-white ">
-                    Agendar consulta
+                   <Link href={"/register"}>Agendar consulta</Link>
                 </Button>
                 </div>
             </div>

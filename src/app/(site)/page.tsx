@@ -43,6 +43,9 @@ export default function Page() {
             </Button>
           </div>
         </div>
+        <div className="mt-10 bg-green-700 p-3">
+          ...
+        </div>
       </main>
     </div>
   );

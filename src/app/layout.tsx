@@ -3,6 +3,7 @@ import { Questrial } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Footer } from "@/components/layout/Footer";
 
 export const embed = Questrial({
   subsets: ["latin"],
@@ -28,7 +29,10 @@ export default function RootLayout({
           >
             {children} 
           </ThemeProvider>
+          
+          <Footer/>
       </body>
+    
     </html>
   );
 }

@@ -1,5 +1,5 @@
 import { appoimentsSchema } from "../schemas/appoiment-schema";
-import { Response, Request } from "express";
+import { Response } from "express";
 import {
   createAppointment,
   deletedAppointments,
@@ -7,7 +7,6 @@ import {
   updateAppointment,
 } from "../services/appoiment-services";
 import { ExtendedRequest } from "../types/auth-request";
-import { json } from "zod";
 import { putAppointmentsSchema } from "../schemas/put-appointments-schema";
 
 export const appointments = async (req: ExtendedRequest, res: Response) => {
