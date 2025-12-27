@@ -25,7 +25,7 @@ export default function Page() {
             <div className="text-lg md:text-2xl mt-2">
               sua dieta, do seu jeito!
             </div>
-            <Link href={"/register"}>
+            <Link href={"/Register"}>
               <Button className="bg-green-600 text-white rounded-full mt-6 p-6 text-lg md:text-2xl hover:bg-green-700 flex gap-3">
                 Criar uma conta
                 <div>
