@@ -8,12 +8,13 @@ import Link from "next/link"
 import { login } from "@/actions/login"
 import { setAuthCookies } from "@/actions/setAuthCookies"
 import { redirect } from "next/navigation"
+import { useAuthStore } from "@/store/auth"
 
 export const LoginForm = () =>{
     const [form,setForm]=useState({email:"",password:""})
     const [error,setError]=useState<ErrorStructure>({})
     const [pending,startTransition]=useTransition()
-
+    const authStore=useAuthStore(state=>state)
 
      const handleChange=(e:ChangeEvent<HTMLInputElement>)=>{
         setForm(form=>({...form,[e.target.name]:e.target.value}))
@@ -39,6 +40,7 @@ export const LoginForm = () =>{
                 setError({form:res.error})
             }else if(res.token){
                await setAuthCookies(res.token)
+               authStore.setToken(res.token)
                redirect('/')
             }
         })
