@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from 'jsonwebtoken'
 import { ExtendedRequest } from "../types/auth-request";
+
 export const authMiddleware=async(req:ExtendedRequest,res:Response,next:NextFunction)=>{
     const authHeader=req.headers['authorization'];
     if(!authHeader) return res.status(401).json({error:'Acesso negado'})
