@@ -1,9 +1,21 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "../ui/button";
+import { useAuthStore } from "@/store/auth";
+import { redirect } from "next/navigation";
 
 export function Header (){
+    const {token} = useAuthStore()
+
+    const handleClick=()=>{
+        if(token){
+            redirect('/appointments')
+        }else{
+            redirect('/register')
+        }
+    }
     return(
         <header  className=" bg-white dark:bg-black">
             <div className="bg-green-700 text-lg flex justify-center">
@@ -15,8 +27,8 @@ export function Header (){
                 </Link>
                 <div className="flex justify-center items-center gap-6">
                     <ModeToggle/>
-                <Button className="bg-transparent text-green-600 text-lg p-4 border border-green-600 rounded-full hover:bg-green-600 hover:text-white ">
-                   <Link href={"/register"}>Agendar consulta</Link>
+                <Button className="bg-transparent text-green-600 text-lg p-4 border border-green-600 rounded-full hover:bg-green-600 hover:text-white " onClick={handleClick}>
+                   Agendar consulta
                 </Button>
                 </div>
             </div>

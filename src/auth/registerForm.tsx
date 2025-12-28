@@ -66,7 +66,7 @@ export const RegisterForm = () =>{
                 {error.confirmPassword && <div className='text-red-500 text-sm mt-1'>{error.confirmPassword}</div>}
             </div>
             <Button type='submit' className='w-full bg-green-700 text-white hover:bg-green-300 p-5' disabled={pending}>
-            {pending ? 'Cadastrar...' : 'Cadastrando'}
+            {pending ? 'Cadastrando...' : 'Cadastrar'}
             </Button>
             {error.form && <div className='text-red-500 text-sm mt-1'>{error.form}</div>}
             <Link href={'/login'} className='flex justify-center text-green-700 text-sm mt-5'>Ja tem conta? faça login!</Link>

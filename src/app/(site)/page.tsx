@@ -1,11 +1,22 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { CardAbout } from "@/components/layout/cardAbout";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
 import { Accordion } from "@/components/layout/cardQuestion";
+import { useAuthStore } from "@/store/auth";
+import { redirect } from "next/navigation";
 
 export default function Page() {
+  const {token}=useAuthStore()
+  const handleClick = ()=>{
+    if(token){
+      redirect('/appointments')
+    }else{
+      redirect('/register')
+    }
+  }
   return (
     <div>
       <main>
@@ -25,9 +36,8 @@ export default function Page() {
             <div className="text-lg md:text-2xl mt-2">
               sua dieta, do seu jeito!
             </div>
-            <Link href={"/Register"}>
-              <Button className="bg-green-600 text-white rounded-full mt-6 p-6 text-lg md:text-2xl hover:bg-green-700 flex gap-3">
-                Criar uma conta
+              <Button className="bg-green-600 text-white rounded-full mt-6 p-6 text-lg md:text-2xl hover:bg-green-700 flex gap-3" onClick={handleClick}>
+                {token  ? <h1>Agendar consulta</h1> : <h1>Fazer cadastro</h1>}
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +55,6 @@ export default function Page() {
                   </svg>
                 </div>
               </Button>
-            </Link>
           </div>
         </div>
 
