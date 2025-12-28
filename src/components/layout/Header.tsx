@@ -5,6 +5,7 @@ import { ModeToggle } from "./mode-toggle";
 import { Button } from "../ui/button";
 import { useAuthStore } from "@/store/auth";
 import { redirect } from "next/navigation";
+import { UserLoggedSelect } from "./userSelect";
 
 export function Header (){
     const {token} = useAuthStore()
@@ -27,11 +28,15 @@ export function Header (){
                 </Link>
                 <div className="flex justify-center items-center gap-6">
                     <ModeToggle/>
+                {token ? <UserLoggedSelect/> 
+                :
                 <Button className="bg-transparent text-green-600 text-lg p-4 border border-green-600 rounded-full hover:bg-green-600 hover:text-white " onClick={handleClick}>
-                   Agendar consulta
+                  Criar conta
                 </Button>
+                }
                 </div>
             </div>
+            
         </header>
     )
 }
