@@ -41,7 +41,7 @@ export const Footer = () => {
           <div>
             <h2 className="text-lg font-semibold mb-2">Produto</h2>
             <Link
-              href="/Funcionalidades"
+              href="/funcionalidades"
               className="hover:underline opacity-90"
             >
               Funcionalidades
