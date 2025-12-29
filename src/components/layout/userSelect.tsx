@@ -30,7 +30,7 @@ export const UserLoggedSelect = () => {
 
       <DropdownMenuContent align="end">
         <DropdownMenuItem><Link href={"/appointments"}>Agendar consulta</Link></DropdownMenuItem>
-        <DropdownMenuItem><Link href={"/Allappointments"}>Minhas consultas</Link></DropdownMenuItem>
+        <DropdownMenuItem><Link href={"/myappointments"}>Minhas consultas</Link></DropdownMenuItem>
         <DropdownMenuItem className="text-red-600" onClick={handleLogout}>
           Sair
         </DropdownMenuItem>

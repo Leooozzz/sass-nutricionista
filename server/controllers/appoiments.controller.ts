@@ -30,7 +30,7 @@ export const getAppointments = async (req: ExtendedRequest, res: Response) => {
   const appointments = await getAppoimentsByClients(clientId);
   if (!appointments || appointments.length === 0)
     return res.status(400).json({ error: "Nenhuma consulta encontrada" });
-  return res.status(400).json(appointments);
+   return res.status(200).json(appointments);
 };
 
 
