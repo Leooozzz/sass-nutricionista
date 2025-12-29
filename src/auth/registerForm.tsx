@@ -1,7 +1,7 @@
 "use client"
 
 import { ChangeEvent, FormEvent, useState, useTransition } from "react"
-import { ErrorStructure, schema } from "./schema/registerSchema"
+import { ErrorStructure, schema } from "../schema/registerSchema"
 import { register } from "@/actions/register"
 import { redirect } from "next/navigation"
 import { Input } from "@/components/ui/input"

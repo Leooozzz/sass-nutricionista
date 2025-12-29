@@ -8,7 +8,7 @@ export default function SiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="">
+    <div >
       <Header />
       <Separator/>
       <main className="w-full max-w-6xl mx-auto p-6 ">{children}</main>

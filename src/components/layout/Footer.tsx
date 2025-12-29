@@ -50,14 +50,14 @@ export const Footer = () => {
 
           <div>
             <h2 className="text-lg font-semibold mb-2">Empresa</h2>
-            <Link href="/Sobre" className="hover:underline opacity-90">
+            <Link href="/sobre" className="hover:underline opacity-90">
               Sobre
             </Link>
           </div>
 
           <div>
             <h2 className="text-lg font-semibold mb-2">Legal</h2>
-            <Link href="/Termos" className="hover:underline opacity-90">
+            <Link href="/termos" className="hover:underline opacity-90">
               Termos
             </Link>
           </div>

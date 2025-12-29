@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/ui/input"
 import { ChangeEvent, FormEvent, useState, useTransition } from "react"
-import { ErrorStructure, schema } from "./schema/loginSchema"
+import { ErrorStructure, schema } from "../schema/loginSchema"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { login } from "@/actions/login"
