@@ -10,10 +10,11 @@ O sistema permite que usuários se registrem, façam login, agendem consultas e 
 
 ### 🔧 Back-end
 - Node.js
-- Express
+- Express.js
 - Prisma ORM
 - JWT (JSON Web Token)
 - Middleware de autenticação
+- Zod
 
 ### 🎨 Front-end
 - Next.js 13 (App Router)
@@ -24,7 +25,7 @@ O sistema permite que usuários se registrem, façam login, agendem consultas e 
 - shadcn/ui
 
 ### 🗄️ Banco de Dados
-- PostgreSQL (ou outro banco suportado pelo Prisma)
+- PostgreSQL 
 
 ---
 
